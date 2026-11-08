@@ -1,0 +1,6 @@
+id: P12
+name: COUNT(*) vs COUNT(DISTINCT order_id)
+planted_causes:
+- DISTINCT_DIFF
+expected_gap: nonzero
+note: ''

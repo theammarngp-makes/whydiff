@@ -1,0 +1,8 @@
+id: P11
+name: payments fan-out + status filter + timezone
+planted_causes:
+- JOIN_DIFF
+- FILTER_DIFF
+- TIME_DIFF
+expected_gap: nonzero
+note: ''

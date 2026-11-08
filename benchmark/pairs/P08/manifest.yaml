@@ -1,0 +1,6 @@
+id: P08
+name: customer_id vs customer_unique_id
+planted_causes:
+- DISTINCT_DIFF
+expected_gap: nonzero
+note: ''

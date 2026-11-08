@@ -1,0 +1,9 @@
+id: P04
+name: payment_value vs price+freight
+planted_causes:
+- JOIN_DIFF
+- JOIN_DIFF
+- AGG_EXPR_DIFF
+expected_gap: nonzero
+note: 'Different source tables: A joins payments, B joins items, and the aggregate
+  differs. Residual to be measured in Stage 3.'

@@ -1,0 +1,6 @@
+id: P05
+name: reviews fan-out
+planted_causes:
+- JOIN_DIFF
+expected_gap: nonzero
+note: ''

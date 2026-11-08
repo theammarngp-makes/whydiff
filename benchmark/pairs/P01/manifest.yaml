@@ -1,0 +1,6 @@
+id: P01
+name: status filter
+planted_causes:
+- FILTER_DIFF
+expected_gap: nonzero
+note: ''

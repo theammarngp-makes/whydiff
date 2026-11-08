@@ -1,0 +1,6 @@
+id: P03
+name: price vs price+freight
+planted_causes:
+- AGG_EXPR_DIFF
+expected_gap: nonzero
+note: ''

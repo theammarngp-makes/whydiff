@@ -1,0 +1,5 @@
+id: P14
+name: CTE vs subquery, same logic
+planted_causes: []
+expected_gap: zero
+note: 'False-positive test: no cause should be reported.'

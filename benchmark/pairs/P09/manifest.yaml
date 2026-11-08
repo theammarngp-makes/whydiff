@@ -1,0 +1,7 @@
+id: P09
+name: status filter + payments fan-out
+planted_causes:
+- FILTER_DIFF
+- JOIN_DIFF
+expected_gap: nonzero
+note: ''

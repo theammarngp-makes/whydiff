@@ -1,0 +1,9 @@
+id: P16
+name: four causes combined
+planted_causes:
+- JOIN_DIFF
+- FILTER_DIFF
+- AGG_EXPR_DIFF
+- TIME_DIFF
+expected_gap: nonzero
+note: ''

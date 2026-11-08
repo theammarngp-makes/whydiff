@@ -1,0 +1,21 @@
+.venv/
+data/
+*.duckdb
+__pycache__/
+.pytest_cache/
+.DS_Store
+# data and environment (never publish the Olist dataset)
+data/
+*.duckdb
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+
+# data and environment (never publish the Olist dataset)
+data/
+*.duckdb
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store

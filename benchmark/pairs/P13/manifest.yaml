@@ -1,0 +1,6 @@
+id: P13
+name: AVG(price) vs SUM(price)/COUNT(DISTINCT order_id)
+planted_causes:
+- AGG_EXPR_DIFF
+expected_gap: nonzero
+note: ''

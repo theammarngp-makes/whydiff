@@ -1,0 +1,6 @@
+id: P06
+name: INNER vs LEFT join to payments
+planted_causes:
+- JOIN_TYPE_DIFF
+expected_gap: nonzero
+note: Gap may be small if almost every order has a payment row.

@@ -1,0 +1,7 @@
+id: P10
+name: status filter + freight included
+planted_causes:
+- FILTER_DIFF
+- AGG_EXPR_DIFF
+expected_gap: nonzero
+note: ''

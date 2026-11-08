@@ -1,0 +1,7 @@
+id: P15
+name: offsetting errors (freight added, early orders cut)
+planted_causes:
+- AGG_EXPR_DIFF
+- TIME_DIFF
+expected_gap: near_zero
+note: Cutoff 2018-06-25 09:53:29 chosen from the data so the two effects roughly cancel.

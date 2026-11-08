@@ -1,0 +1,24 @@
+pair_id,cause_id,kind,effect,share_pct,description
+P01,c1,FILTER_DIFF,-370145.5900005009,100.0,Filter only in query B: orders.order_status = 'delivered'
+P02,c1,JOIN_DIFF,-617471.6400009878,100.0,Join to order_payments only in query A (fan-out candidate)
+P03,c1,AGG_EXPR_DIFF,2251909.539984543,100.0,Aggregate expression differs: SUM(order_items.price) vs SUM(order_items.price + order_items.freight_value)
+P04,c1,COMBINED,-165318.88000003062,100.0,Combined change: Join to order_payments only in query A (fan-out candidate); Join to order_items only in query B; Aggregate expression differs: SUM(order_payments.payment_value) vs SUM(order_items.price + order_items.freight_value)
+P05,c1,JOIN_DIFF,64418.93000004813,100.0,Join to order_reviews only in query A (fan-out candidate)
+P06,c1,JOIN_TYPE_DIFF,134.97000000067055,100.0,Join to order_payments is INNER in A but LEFT in B
+P07,c1,TIME_DIFF,2023.1799999998184,100.0,Date/time conditions differ between the queries
+P08,c1,DISTINCT_DIFF,-3345.0,100.0,What is counted differs: COUNT(DISTINCT customers.customer_id) vs COUNT(DISTINCT customers.customer_unique_id)
+P09,c1,JOIN_DIFF,-604901.1200009761,61.248538565904155,Join to order_payments only in query A (fan-out candidate)
+P09,c2,FILTER_DIFF,-382716.11000051256,38.75146143409585,Filter only in query B: orders.order_status = 'delivered'
+P10,c1,FILTER_DIFF,-396962.54000022635,-21.71413023945273,Filter only in query B: orders.order_status = 'delivered'
+P10,c2,AGG_EXPR_DIFF,2225092.5899848174,121.71413023945273,Aggregate expression differs: SUM(order_items.price) vs SUM(order_items.price + order_items.freight_value)
+P11,c1,JOIN_DIFF,-35240.08000000229,62.54974104217515,Join to order_payments only in query A (fan-out candidate)
+P11,c2,FILTER_DIFF,-22972.490000001213,40.77525648619245,Filter only in query B: orders.order_status = 'delivered'
+P11,c3,TIME_DIFF,1873.2799999999697,-3.3249975283675965,Date/time conditions differ between the queries
+P12,c1,DISTINCT_DIFF,-13984.0,100.0,What is counted differs: COUNT(*) vs COUNT(DISTINCT orders.order_id)
+P13,c1,AGG_EXPR_DIFF,17.100337364114708,99.99999999999883,Aggregate expression differs: AVG(order_items.price) vs SUM(order_items.price) / COUNT(DISTINCT orders.order_id)
+P15,c1,AGG_EXPR_DIFF,2079865.8449860457,476771.0246614525,Aggregate expression differs: SUM(order_items.price) vs SUM(order_items.price + order_items.freight_value)
+P15,c2,TIME_DIFF,-2079429.6050013565,-476671.02466145257,Date/time conditions differ between the queries
+P16,c1,JOIN_DIFF,-38509.173333335304,-35.22736070540927,Join to order_payments only in query A (fan-out candidate)
+P16,c2,FILTER_DIFF,-24650.70000000197,-22.549928377433982,Filter only in query B: orders.order_status = 'delivered'
+P16,c3,AGG_EXPR_DIFF,170607.0816666294,156.0676764661943,Aggregate expression differs: SUM(order_items.price) vs SUM(order_items.price + order_items.freight_value)
+P16,c4,TIME_DIFF,1868.8816666665755,1.709612616648913,Date/time conditions differ between the queries
