@@ -86,7 +86,7 @@ if "qa" not in st.session_state:
 with st.sidebar:
     st.header("Settings")
     st.success("Olist database connected")
-    st.selectbox("Sample pair", ids, key="sample")
+    st.selectbox("Sample pair", ids, key="sample", on_change=load_sample)
     st.button("Load sample", on_click=load_sample)
     max_exact = st.slider("Exact Shapley up to this many causes", 2, 10, 8,
                           help="n causes need 2^n query runs. Above this, a sampled estimate is used.")
