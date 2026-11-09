@@ -140,3 +140,16 @@ Paste: the output of `ls scripts`, the H02 profile check, and checklist steps 1-
 - Git history rewritten with filter-branch to remove the private brief PDF. Verified: no .pdf, .duckdb, data/ or .venv in any commit. Commits are now 92835a6, 3af4c07, 580eae4, 3c642a6, 0f1ef2f (plus the fix commit below). Backup bundle ~/whydiff_before_clean.bundle still contains the PDF: keep private, delete after the push.
 - Secrets grep (/Users/, password, api key, secret) on tracked files: no hits. pytest: 86 passed.
 - Remaining: push to GitHub (token login), check the repo in a private window, then optional v2 items.
+
+## Session 3 final state (2026-11-09)
+Stages 0-8 done. Pushed to https://github.com/theammarngp-makes/whydiff (public), main at c3016d3. Remote's auto-generated "Initial commit" (README only) was replaced with --force-with-lease. History was cleaned of the private brief PDF beforehand (verified); backup bundle deleted. 86 tests pass. README renders with mermaid and the four screenshots.
+
+## Remaining (optional)
+- [ ] Confirm About description and topics are set on GitHub
+- [ ] Decide on CI: check whether tests need data/olist.duckdb (grep tests/, read conftest.py) before adding .github/workflows
+- [ ] Tag v0.1.0; pin repo; check Olist licence on Kaggle
+- [ ] Practise INTERVIEW_NOTES.md aloud
+- [ ] v2 options: schema-aware column resolution (H02), IN-subquery equivalence (H03), grouped results, better partial-cancellation warning (H05 gross about 4.9x gap, no warning), precedence-constrained Shapley for COMBINED causes. Re-run held-out set after any change and keep the old table with a before/after note.
+
+## Exact first action next session
+Paste the output of: grep -rln "olist.duckdb\|duckdb.connect\|data/" tests/ ; cat tests/conftest.py ; and say which v2 item (if any) to start.
