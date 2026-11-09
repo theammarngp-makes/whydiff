@@ -1,0 +1,6 @@
+id: H04
+name: CTE pre-aggregated payments vs raw payments join
+planted_causes:
+- JOIN_DIFF
+expected_gap: nonzero
+note: A pre-aggregates payments to one row per order; B joins raw payment rows (fan-out).

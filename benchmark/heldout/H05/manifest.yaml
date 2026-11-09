@@ -1,0 +1,7 @@
+id: H05
+name: different aliases and join order, comment, NOT IN
+planted_causes:
+- JOIN_DIFF
+- FILTER_DIFF
+expected_gap: nonzero
+note: ''

@@ -1,0 +1,6 @@
+id: H01
+name: no aliases vs aliases, lowercase vs uppercase keywords
+planted_causes:
+- FILTER_DIFF
+expected_gap: nonzero
+note: ''

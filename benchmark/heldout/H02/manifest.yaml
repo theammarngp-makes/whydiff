@@ -1,0 +1,6 @@
+id: H02
+name: unqualified columns vs qualified columns
+planted_causes:
+- FILTER_DIFF
+expected_gap: nonzero
+note: ''

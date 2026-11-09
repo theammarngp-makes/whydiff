@@ -1,0 +1,6 @@
+id: H03
+name: join+WHERE vs IN-subquery, same logic
+planted_causes: []
+expected_gap: zero
+note: 'False-positive test: the two queries are logically equal (orders.order_id is
+  unique).'

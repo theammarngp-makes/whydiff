@@ -2,7 +2,7 @@
 Last updated: 2026-11-08 | Session number: 2
 
 ## Current stage
-Stage 5b (held-out pairs) then Stage 8 (docs) | Status: not started. Stages 0-7 done.
+Stage 5b (held-out pairs) then Stage 8 (docs) | Status: not started. Stages 0-7 done and committed.
 
 ## Completed
 - [x] Stage 0: setup, data load, schema
@@ -14,13 +14,14 @@ Stage 5b (held-out pairs) then Stage 8 (docs) | Status: not started. Stages 0-7 
 - [x] Stage 6: Streamlit app, accepted on P11 (summary, causes table, waterfall, two row-count trails)
 - [x] Stage 7: exporters, accepted: Excel (Summary, Causes, RowTrail, Queries) and Tableau CSV verified against benchmark numbers
 
-## Pending small checks (before or at start of next session)
-- [ ] Apply session-2 edits: exporters._r rounding helper + test; app.pair_label whitespace normalisation; confirm `from whydiff.evaluator import EvaluationError` is present in app.py
-- [ ] Run `python -m pytest -q` (last known: 76 passed before exporters tests)
-- [ ] App check for P14 (values match, no differences) and P15 (cancel-out warning); take screenshots
-- [ ] Open the CSV in Tableau Public (not yet confirmed)
-   - [x] Apply session-2 edits (exporters._r rounding, app.pair_label whitespace, EvaluationError import)
-   - [x] pytest: 80 passed (2026-11-08)
+## Pending small checks
+- [x] Session-2 edits applied; pytest 80 passed
+- [x] CSV opened in Tableau Public: bar chart of effects by cause, SUM(Effect) = -56,339 = P11 gap
+- [x] .gitignore covers data/, .venv/, *.duckdb, caches; private brief PDF untracked
+- [x] Local git repo; first commit b927757 "Stages 0-7 complete"; no remote, not pushed
+- [x] App checks passed: P11 (3 causes, residual 0), P14 (CTE vs IN-subquery: same value, no differences), P15 (cancel-out warning, effects +2,079,865.84 / -2,079,429.61, gross 4,159,295.45)
+- [x] Screenshots saved in docs/screenshots/: p11_result.png (retaken, correct), p14_no_difference.png, p15_offsetting.png, tableau_p11_effects.png
+- [x] app.py: sample-pair dropdown auto-loads (on_change=load_sample)
 
 ## Files delivered so far
 | Path | Status | Notes |

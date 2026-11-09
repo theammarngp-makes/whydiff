@@ -1,0 +1,6 @@
+id: H06
+name: BETWEEN with date-only upper bound vs half-open range
+planted_causes:
+- TIME_DIFF
+expected_gap: nonzero
+note: BETWEEN ... AND '2017-11-30' stops at midnight, so 30 November orders are lost.
