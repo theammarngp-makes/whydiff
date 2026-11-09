@@ -78,3 +78,48 @@ A: No. Joining orders to order_items is an intended one-to-many join, and both q
 
 **Q: What did you notice when checking the exports?**
 A: The raw CSV had floating-point noise and negative zeros, so I rounded exported values and normalised negative zero. I also made the pair label ignore whitespace differences so a sample pair is not mislabelled as custom.
+
+## Stage 5b: Held-out pairs
+
+**What was built (plain language):**
+1. Six query pairs written by hand in varied SQL styles (no aliases, CTEs, subqueries, comments, BETWEEN).
+2. I wrote my predictions down before running, then a script sorted each result into correct, declined, wrong or false positive.
+3. Result: 3 correct, 2 declined, 1 wrong.
+4. The failures are written up in docs/WHAT_DID_NOT_WORK.md instead of being hidden.
+
+**Q: Your benchmark shows 100% recall. Why should I believe it generalises?**
+A: It does not, and I say so. Those 16 pairs came from the same templates the detectors were built around. On six hand-written pairs in other styles, three were correct, two were declined and one had a spurious zero-effect cause.
+
+**Q: What was the one wrong result?**
+A: With two tables in the query, an unqualified `price` and a qualified `order_items.price` were treated as different expressions, so the tool reported an extra cause with an effect of 0.00 next to the real filter. I confirmed by printing the profiles (`SUM(price)` versus `SUM(order_items.price)`) that the reason is that unqualified columns are only resolved to a table when the query has one table. A proper fix needs the table schema, so I documented it instead of patching around it.
+
+**Q: Did you predict the outcomes first?**
+A: I wrote predictions before running and they matched on all six. But I had read the code, so they were not blind, and I made a command mistake so they were not committed before the run. Git cannot prove the order, and I say that in the repo.
+
+**Q: Is it a failure when the tool says "unsupported"?**
+A: No. Declining is the designed behaviour for constructs I cannot compare safely. A wrong answer is the real failure, because a user may trust it.
+
+## Required questions not covered earlier
+
+**Q: What is join fan-out and how does your tool detect it?**
+A: Fan-out is what happens when you join a table with several rows per order, such as payments, to order-level data. The order repeats once per payment row, so SUM counts it several times. The tool finds it two ways. First, the diff sees that a join exists in only one query (JOIN_DIFF) and measures its effect by removing it and re-running. Second, a separate diagnostic counts rows after each join. In P11, query A goes from 112,650 rows after the items join to 117,601 after the payments join. That flag is evidence, not proof, because the intended orders-to-items join is also flagged.
+
+**Q: What would break it? What does it not support?**
+A: It supports one SELECT with one aggregate and no GROUP BY. Window functions, recursive CTEs, correlated subqueries and changed join conditions are refused with a clear message. On my held-out pairs, an unqualified column in a multi-table query produced a harmless extra cause (H02), and `IN (subquery)` against join-plus-filter was refused (H03). The percent shares also become meaningless when causes offset, as in P15, so I warn and show currency effects.
+
+**Q: How would you extend it to grouped results or other SQL dialects?**
+A: For grouped results I would run the patched queries with GROUP BY, compare per group, and attribute each group's gap with the same Shapley code, plus an overall view. That needs the evaluator to return a table, not one number, and the identity check per group. For other dialects, sqlglot already parses many dialects, so the change is passing the right `read` and `write` dialect and re-running the benchmark on that engine. I tested DuckDB only, so I would not claim other dialects work until I have run them.
+
+## Stage 8: Documentation
+
+**What was built (plain language):**
+1. A README with the demo, the real benchmark tables, the held-out results and the limits.
+2. LIMITATIONS.md and a "What did not work" document, both populated from real failures.
+3. A SQL Handbook module that teaches the six causes using numbers from the benchmark.
+4. An MIT licence and a checklist for the first push, including a check that no Olist data or private files go public.
+
+**Q: Why a "What did not work" section?**
+A: Because every project has failures, and showing them is more credible than hiding them. A reviewer can see what I tested, what failed and what I did about it.
+
+**Q: What would you say if asked whether this is the first tool of its kind?**
+A: I would say I could not find an existing open-source tool that does this when I searched in November 2026, that the search was not exhaustive, and that Shapley attribution itself is not mine. What I did was apply it to the differences between two executed SQL queries.

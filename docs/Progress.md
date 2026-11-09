@@ -91,3 +91,47 @@ pytest: 80 passed after exporters tests and the rounding test.
 
 ## Exact first action next session
 Paste the brief, this PROGRESS.md, the attached source files listed in the handoff, and: output of `python -m pytest -q`; app results for P14 and P15; whether the CSV opened in Tableau Public; `cat .gitignore`. Then confirm the small checks, start Stage 5b (write 5-6 held-out pairs, give me the run command, paste results), then do Stage 8.
+
+# PROGRESS
+Last updated: 2026-11-09 | Session number: 3
+
+## Current stage
+Stage 8: documentation | Status: files written, pending Ammar's verification and the first push. Stage 5b done and committed.
+
+## Completed
+- [x] Stages 0-7 (see session 2 notes; committed b927757)
+- [x] Stage 5b: six held-out pairs H01-H06, run 2026-11-09 16:17; committed 3afded5
+- [x] pytest: 86 passed (after tests/test_heldout_manifests.py)
+- [x] Stage 8 files delivered in chat: README.md, LIMITATIONS.md, LICENSE (MIT, 2026 Mohammad Ammar), docs/module_why_queries_disagree.md, INTERVIEW_NOTES additions, GitHub description and topics, first-push checklist
+
+## Held-out results (real, run 2026-11-09 16:17)
+3 correct, 2 declined, 1 wrong.
+H01 correct FILTER_DIFF -370,145.59 | H02 wrong: extra cause (FILTER_DIFF -370,145.59 + AGG_EXPR_DIFF +0.00) | H03 declined: "cannot find the condition to remove (semi-join conditions are not patchable in v1)", A=B=13,221,498.11 | H04 declined: "JOIN to a CTE/subquery that is not a simple key list", A 13,591,508.73, B 14,209,115.34 | H05 correct JOIN_DIFF +63,467.44, FILTER_DIFF -96,291.47, gap -32,824.03 | H06 correct TIME_DIFF +31,322.74, A 978,948.63, B 1,010,271.37.
+H02 cause is probable, not verified (unqualified column only resolved when the query has a single table). A check command was given; result not yet pasted.
+Predictions (docs/HELDOUT_PREDICTIONS.md) were written before the run but committed after it because the first `git add` failed on a missing file. Say so in all docs.
+
+## Files delivered so far
+All Stage 0-7 files final. Stage 5b: docs/HELDOUT_PREDICTIONS.md, docs/WHAT_DID_NOT_WORK.md, benchmark/heldout/, scripts/make_heldout.py, run_heldout.py, tests/test_heldout_manifests.py, results/heldout.md/.csv (committed).
+Stage 8 (delivered in chat, to be created and committed by Ammar): README.md, LIMITATIONS.md, LICENSE, docs/module_why_queries_disagree.md. INTERVIEW_NOTES.md: remove "Still to cover" section, replace Stage 5b section, append new sections.
+
+## Decisions log (additions)
+- H02 and H03 not fixed in v1: H02 needs schema-aware column resolution; documented as limitations.
+- README numbers copied from results/benchmark.md (runtime 0.046/0.115 s as in that file) and results/heldout.md.
+- Olist data is never redistributed; README tells readers to check the Kaggle licence (not verified by us).
+- README quick start uses scripts/load_data.py: name taken from app.py error text, to verify with `ls scripts`.
+
+## Known issues
+- Benchmark pairs come from the detectors' own templates; held-out set is only six pairs.
+- H02 spurious zero-effect cause; H03 equivalent-logic pair refused; H04 refused (by design).
+- 10x offset threshold is a heuristic: H05 gross effect is about 4.9x the gap, no warning.
+- Brief PDF may still exist in git history (commit 8c94312 "untrack private brief"); history check pending.
+
+## Remaining work
+- [ ] Create the four Stage 8 files and update INTERVIEW_NOTES.md; paste `ls scripts` and the H02 profile output
+- [ ] Fix README quick start line if load script name differs; update H02 wording from "probable" to verified if the output confirms
+- [ ] Run first-push checklist steps 1-4 and paste output; clean history if the PDF or data appears
+- [ ] Commit Stage 8, create the GitHub repo, push, check it in a private window
+- [ ] Optional v2: schema-aware column resolution (H02), semi-join equivalence (H03), grouped results, precedence-constrained Shapley for COMBINED causes
+
+## Exact first action next session
+Paste: the output of `ls scripts`, the H02 profile check, and checklist steps 1-4. Then we fix any README detail, clean git history if needed, commit and push.

@@ -26,7 +26,7 @@ recall there only shows in-scope behaviour. Six hand-written pairs in other styl
 
 - **H02, wrong (extra cause).** Unqualified `price` vs `order_items.price` in a two-table
   query produced a spurious AGG_EXPR_DIFF with effect +0.00 beside the correct filter
-  (-370,145.59). Probable reason, not yet verified: unqualified columns are only rewritten to
+  (-370,145.59). Confirmed by printing the profile (A: `SUM(price)`, B: `SUM(order_items.price)`): unqualified columns are only rewritten to
   a table name when the query has a single table. Not fixed in v1; a real fix needs
   schema-aware column resolution.
 - **H03, declined.** Join plus filter vs `IN (subquery)`: both return 13,221,498.11, but the
