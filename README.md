@@ -1,5 +1,7 @@
 # WhyDiff
 
+  ![tests](https://github.com/theammarngp-makes/whydiff/actions/workflows/tests.yml/badge.svg)
+
 **Two SQL queries that should calculate the same metric return different numbers. WhyDiff finds the structural differences between them and attributes the numeric gap to named causes.**
 
 Marketing reports revenue of 16.0M, Finance reports 13.6M, and nobody knows why. Usually the cause is a small SQL difference: a join that multiplies rows, a status filter, a different aggregate expression, a timezone shift. WhyDiff runs both queries on the same dataset, compares their structure, and puts a number on each cause, so a diagnosis that takes days by hand takes seconds.
