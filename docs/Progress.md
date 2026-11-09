@@ -118,7 +118,7 @@ Stage 8 (delivered in chat, to be created and committed by Ammar): README.md, LI
 - H02 and H03 not fixed in v1: H02 needs schema-aware column resolution; documented as limitations.
 - README numbers copied from results/benchmark.md (runtime 0.046/0.115 s as in that file) and results/heldout.md.
 - Olist data is never redistributed; README tells readers to check the Kaggle licence (not verified by us).
-- README quick start uses scripts/load_data.py: name taken from app.py error text, to verify with `ls scripts`.
+- Loader command is `python src/whydiff/loader.py load` (also `schema`); an earlier draft wrongly said scripts/load_data.py.
 
 ## Known issues
 - Benchmark pairs come from the detectors' own templates; held-out set is only six pairs.
@@ -135,3 +135,8 @@ Stage 8 (delivered in chat, to be created and committed by Ammar): README.md, LI
 
 ## Exact first action next session
 Paste: the output of `ls scripts`, the H02 profile check, and checklist steps 1-4. Then we fix any README detail, clean git history if needed, commit and push.
+## Session 3 end state (2026-11-09)
+- Stage 5b and Stage 8 done. H02 cause confirmed by printing profiles (SUM(price) vs SUM(order_items.price)).
+- Git history rewritten with filter-branch to remove the private brief PDF. Verified: no .pdf, .duckdb, data/ or .venv in any commit. Commits are now 92835a6, 3af4c07, 580eae4, 3c642a6, 0f1ef2f (plus the fix commit below). Backup bundle ~/whydiff_before_clean.bundle still contains the PDF: keep private, delete after the push.
+- Secrets grep (/Users/, password, api key, secret) on tracked files: no hits. pytest: 86 passed.
+- Remaining: push to GitHub (token login), check the repo in a private window, then optional v2 items.

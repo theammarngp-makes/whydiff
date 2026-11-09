@@ -152,7 +152,7 @@ pip install -r requirements.txt
 The Olist data is **not** included in this repository. Download the Brazilian E-Commerce Public Dataset by Olist from Kaggle, put the nine CSV files in `data/raw/`, then:
 
 ```bash
-python scripts/load_data.py          # builds data/olist.duckdb
+python src/whydiff/loader.py load   # builds data/olist.duckdb from data/raw/
 python -m pytest -q                  # unit tests
 python scripts/run_benchmark.py      # writes results/benchmark.md and .csv
 python scripts/make_heldout.py       # writes benchmark/heldout/H01..H06

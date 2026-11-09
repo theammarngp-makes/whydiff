@@ -20,13 +20,6 @@ Q: What can the detectors not see? A: Anything outside the six kinds, changed jo
 Q: Why group all date conditions into one TIME_DIFF? A: A timezone shift changes both ends of a window together; counting each bound separately would split one cause into several.
 Q: How do you separate DISTINCT from aggregate differences? A: DISTINCT_DIFF when what is counted as distinct differs; AGG_EXPR_DIFF for a different expression such as price versus price plus freight.
 
-## Still to cover (required by the brief)
-- What is join fan-out and how does the tool detect it?
-- Why Shapley values instead of removing differences one at a time?
-- What does the residual mean, and when is it large?
-- How do you know the tool is right? What did you test?
-- What would break it? What does it not support?
-- How would you extend it to grouped results or other SQL dialects?
 
 ## Stage 4: Shapley attribution
 Plain language: when several differences interact, one cause's effect depends on which others are already applied. Shapley averages its effect over every possible order, so the split is fair and does not depend on the order I happened to apply them.

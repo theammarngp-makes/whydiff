@@ -75,7 +75,7 @@ st.caption("Why do two SQL queries for the same metric disagree? Run both, find 
            "differences, and attribute the gap to causes.")
 
 if not DB.exists():
-    st.error(f"Database not found: {DB}. Run scripts/load_data.py first.")
+    st.error(f"Database not found: {DB}. Run: python src/whydiff/loader.py load")
     st.stop()
 con = get_con()
 ids = pair_ids()
